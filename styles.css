@@ -28,3 +28,9 @@ html, body {
     background-color: transparent;
     color: transparent;
 }
+ul li a {
+	text-decoration: none;
+	color: white;
+    display: block;
+
+}
