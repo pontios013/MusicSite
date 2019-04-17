@@ -26,7 +26,7 @@ html, body {
 
 .full-screen-video-content {
     background-color: transparent;
-    color: #333;
+    color: transparent;
     padding: 20px;
     font-size: 70px;
     margin-top: 100px;
