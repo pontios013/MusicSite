@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
 <html  lang="gr">
-
 <head>
-	<title> CONTACT </title>
+	<title>ACCOUNT</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	
 </head>
+
 
 <body>
 <?php
@@ -15,19 +17,21 @@ include 'db_config.php';
 
 if(isset($_POST['create'])) {
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-    $name = $_POST['name'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $text = $_POST['subject'];
-	
+	$phonenumber = $_POST['phonenumber'];
+    $password = $_POST['password'];
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO contact (name,email, text)
-    VALUES ('$name', '$email', '$text')";
+    $sql = "INSERT INTO users (firstname, lastname, email, phonenumber, password)
+    VALUES ('$firstname', '$lastname', '$email', '$phonenumber', '$password')";
 
 	if ($conn->query($sql) === TRUE) {
-        echo "ΣΤΑΛΘΕΙΚΕ ΕΠΥΤΗΧΟΣ";
+        echo "Επιτυχής εγγραφή, παρακαλώ συνδεθείτε";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -57,12 +61,14 @@ if(isset($_POST['create'])) {
 	<br><br><br>
 <!--img width="1116 " height="462" src="12.jpg"-->
 </center>
-	<br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br>
 
+
+
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br>
 
 <div class="block1000">
 	<br>
@@ -71,24 +77,29 @@ if(isset($_POST['create'])) {
 		<table border="5" bgcolor="#A9A9A9" width="612" height="783">	
 			<td>
 				<center>	
-	<form action="contact.php" method="post">
+	<form action="reg.php" method="post">
 		<br>
 			
 			
 					<h1>CREATE YOUR ACCOUNT</h1>
 <br>
 		
-					<label for="Name"><b>Name</b></label><br><br>
-					<input class="form-control" id="name" type="text" name="name" required>
+					<label for="firstname"><b>First Name</b></label><br><br>
+					<input class="form-control" id="firstname" type="text" name="firstname" required>
 <br><br><br>
-					<label for="email"><b>email</b></label><br><br>
-					<input class="form-control" id="email"  type="text" name="email" required>
+					<label for="lastname"><b>Last Name</b></label><br><br>
+					<input class="form-control" id="lastname"  type="text" name="lastname" required>
 <br><br><br>
-					<label for=" SOME TEXT"><b> SOME TEXT</b></label><br><br>
-					<input type="text" name="subject" value="" placeholder="Some text..." " style="height:200px">
+					<label for="email"><b>Email Address</b></label><br><br>
+					<input class="form-control" id="email"  type="email" name="email" required>
 <br><br><br>
-
-					<input class="button" type="submit" id="contact" name="create" value="Sent us"><br><br><br>
+					<label for="phonenumber"><b>Phone Number</b></label><br><br>
+					<input class="form-control" id="phonenumber"  type="text" name="phonenumber" required>
+<br><br><br>
+					<label for="password"><b>Password</b></label><br><br>
+					<input class="form-control" id="password"  type="password" name="password" required>
+<br><br><br>
+					<input class="button" type="submit" id="register" name="create" value="Sign Up"><br><br><br>
 </form>
 </div>
 
@@ -100,4 +111,3 @@ if(isset($_POST['create'])) {
 </script>
 </body>
 </html>
-	
